@@ -26,12 +26,16 @@ def home():
         if account:
             session['loggedin'] = True
             session['atmpin'] = account['atmpin']
-            #msg = 'Logged in successfully !'
-            return render_template('bank_or_vote.html')
+            msg = 'Logged in successfully !'
+            return render_template('bank_or_vote.html',msg=msg)
         else:
-            msg = 'Incorrect username / password !'
-    return render_template('pin_entry.html')
-
+            msg = 'Incorrect pin'
+    return render_template('pin_entry.html',msg=msg)
+   
+@app.route("/vote")
+def vote():
+    return render_template('bank_or_vote.html')
+ 
 if __name__=="__main__":
     app.run(debug=True)
 
