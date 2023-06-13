@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voting Done</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        text-align: center;
+        padding: 45px;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #9083a977;
+      }
+
+      h1 {
+        margin-bottom: 45px;
+      }
+
+      .btn {
+        margin-top: 35px;
+      }
+
+      .gif {
+        width: 285px;
+        height: 250px;
+      }
+      #background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <video id="background-video" autoplay loop muted>
+      <source src="back.mp4" type="video/mp4" />
+    </video>
+    <div class="container">
+      <h1>Thank You for Voting !</h1>
+      <img class="gif" src="thumbsup.gif" alt="Thumbs Up" /> <br />
+      <br />
+      <h4>Your vote has been registered successfully.</h4>
+      <br />
+      <h4>You can now <strong>remove your card</strong></h4>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

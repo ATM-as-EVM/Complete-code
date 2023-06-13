@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voting Interface</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .title {
+        font-size: xx-large;
+        font-family: monospace;
+        background-color: #f6efe8;
+        color: black;
+        border-style: inset;
+        border-color: black;
+        border-width: 10px;
+        text-align: center;
+      }
+
+      .title:hover {
+        font-size: xx-large;
+        font-family: monospace;
+        background-color: rgb(224, 218, 218);
+        color: black;
+        transition: 1.1s;
+      }
+
+      .hp {
+        float: left;
+        margin: 0 15px -100px 0;
+      }
+
+      .head {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .dropdown-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .dropdown {
+        margin-left: 10px;
+      }
+
+      .dropdown-label {
+        font-size: 16px;
+        margin-right: 5px;
+      }
+
+      .dropdown-select {
+        font-size: 16px;
+        padding: 5px;
+      }
+
+      .party-row {
+        display: flex;
+        gap: 20px;
+        margin-top: 30px;
+        justify-content: center;
+      }
+
+      .party {
+        flex: 1;
+        background-color: #ddd;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 100%;
+      }
+
+      .party:hover {
+        background-color: #d3bbbb;
+      }
+
+      .party-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+      }
+
+      .party-name {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .party-description {
+        font-size: 16px;
+        color: #100d0d;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        -webkit-border-radius: 9;
+        -moz-border-radius: 9;
+        border-radius: 9px;
+        font-family: Arial;
+        align-items: center;
+        align-content: center;
+        color: #ffffff;
+        font-size: 17px;
+        background: #d04a4a;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        display: block;
+        margin: 0 auto;
+        height: 9%;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background: #b50b38;
+        text-decoration: none;
+        cursor: grab;
+      }
+    </style>
+  </head>
+  <body>
+    <video
+      id="background-video"
+      src="static/background.mp4"
+      autoplay
+      loop
+      muted
+    ></video>
+    <div class="container">
+      <div class="title">
+        <img
+          src="static/ECI.jpg"
+          class="hp"
+          alt="eci"
+          height="109px"
+          width="115px"
+          style="cursor: pointer"
+        />
+        <h2>Election Commission of India</h2>
+      </div>
+      <div class="dropdown-container">
+        <div class="dropdown">
+          <label class="dropdown-label" for="select-name">Choose Name:</label>
+          <select id="select-name" class="dropdown-select">
+            <option value="">Choose Your Constituency</option>
+            <option value="chamundeshwari">Chamundeshwari</option>
+            <option value="varuna">Varuna</option>
+            <option value="krishnaraja">Krishnaraja</option>
+            <option value="narasimharaja">Narasimharaja</option>
+            <option value="chamaraja">Chamaraja</option>
+            <option value="nanjangud">Nanjangud</option>
+            <option value="krishnarajanagara">Krishnarajanagara</option>
+          </select>
+        </div>
+      </div>
+      <h1 class="head">Voting Phase</h1>
+      <br />
+      <div class="party-row">
+        <div class="party">
+          <img
+            src="static/tree.png"
+            alt="Party 1 Logo"
+            class="party-logo"
+            style="cursor: help"
+          />
+          <h3 class="party-name">Party 1</h3>
+          <p class="party-description">
+            " Your Vote, Your Power, Your Future!"
+          </p>
+          <br />
+          <a href="#" class="btn">Vote</a>
+        </div>
+        <div class="party">
+          <img
+            src="static/bear.png"
+            alt="Party 2 Logo"
+            class="party-logo"
+            style="cursor: help"
+          />
+          <h3 class="party-name">Party 2</h3>
+          <p class="party-description">
+            " Your Vote, Your Power, Your Future!"
+          </p>
+          <br />
+          <a href="#" class="btn">Vote</a>
+        </div>
+        <div class="party">
+          <img
+            src="static/moon.png"
+            alt="Party 3 Logo"
+            class="party-logo"
+            style="cursor: help"
+          />
+          <h3 class="party-name">Party 3</h3>
+          <p class="party-description">
+            " Your Vote, Your Power, Your Future!"
+          </p>
+          <br />
+          <a href="#" class="btn">Vote</a>
+        </div>
+        <div class="party">
+          <img
+            src="static/book.png"
+            alt="Party 4 Logo"
+            class="party-logo"
+            style="cursor: help"
+          />
+          <h3 class="party-name">Party 4</h3>
+          <p class="party-description">
+            " Your Vote, Your Power, Your Future!"
+          </p>
+          <br />
+          <a href="#" class="btn">Vote</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
