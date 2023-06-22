@@ -8,6 +8,16 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <script type="text/javascript">
+      // Function to redirect or transition to another page
+      function redirect() {
+        // Replace 'Voting_done.html' with the URL of the desired page
+        window.location.href = "/done";
+      }
+
+      // Set the timeout for 4 seconds (4000 milliseconds)
+      setTimeout(redirect, 4000);
+    </script>
     <style>
       body {
         display: flex;
@@ -55,12 +65,10 @@
       <source src="static/back.mp4" type="video/mp4" />
     </video>
     <div class="container">
-      <h1>Thank You for Voting !</h1>
-      <img class="gif" src="static/thumbsup.gif" alt="Thumbs Up" /> <br />
+      <h1>You voted <img src="static/check.png" style="width: 40px" alt="" /></h1>
       <br />
-      <h4>Your vote has been registered successfully.</h4>
+      <h4>Your vote is succesfully registered</h4>
       <br />
-      <h4>You can now <strong>remove your card</strong></h4>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

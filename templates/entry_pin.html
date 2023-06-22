@@ -60,53 +60,7 @@
         >
           <image width="150" height="150" href="/static/atm.png" />
         </svg>
-        <!-- <h1 class="display-6" style="font-weight: 400">
-          Please enter your Card Number
-        </h1>
-        <br />
-        <div class="w-25 mx-auto">
-          <form action="/action_page.php">
-            <input
-              class="form-control form-control-lg w-2"
-              type="password"
-              placeholder="Your Card Number"
-              aria-label=".form-control-lg example"
-              maxlength="16"
-            />
-            <br />
-          </form>
-        </div>
-        <br />
-        <h1 class="display-6" style="font-weight: 400">
-          Please enter your PIN
-        </h1>
-        <br />
-        <div class="w-25 mx-auto">
-          <form action="/action_page.php">
-            <input
-              class="form-control form-control-lg w-2"
-              type="password"
-              placeholder="Your ATM pin"
-              aria-label=".form-control-lg example"
-              maxlength="4"
-            />
-            <br /><br />
-            <button
-              style="
-                font-weight: 400;
-                border-radius: 35px;
-                width: 15vh;
-                height: 8vh;
-                font-size: 18px;
-              "
-              type="button"
-              class="btn btn-primary"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-        <br /> -->
+        
         {% if error %}
             <p style="color: red;">{{ error }}</p>
         {% endif %}
@@ -117,7 +71,7 @@
           <form action="/login" method="post">
             <input
               class="form-control form-control-lg w-2"
-              type="password"
+              type="text"
               id="card_number"
               name="card_number"
               placeholder="Your Card Number"

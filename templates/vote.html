@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Interface</title>
+</head>
+<body>
+    <style>
+        body {
+          background-color: #eae0fe;
+          font-family: Arial, sans-serif;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+
+        .title{
+            font-size: xx-large;
+            font-family: monospace;
+            background-color: #f6efe8;
+            color: black;
+            border-style: inset;
+            border-color: black;
+            border-width: 10px;
+            text-align: center;
+        }
+
+        .title:hover{
+            font-size: xx-large;
+            font-family: monospace;
+            background-color:rgb(224, 218, 218);
+            color: black;
+            transition: 1.1s;
+        }
+
+        .hp {
+          float: left;    
+          margin: 0 15px -100px 0;
+         } 
+
+        .head {
+          font-size: 36px;
+          font-weight: bold;
+          color: #333;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .party-row {
+          display: flex;
+          gap: 20px;
+          margin-top: 30px;
+          justify-content: center;
+        }
+
+        .party {
+          flex: 1;
+          background-color: #fff;
+          padding: 20px;
+          text-align: center;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
+
+        .party-logo {
+          width: 100px;
+          height: 100px;
+          margin-bottom: 15px;
+        }
+
+        .party-name {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .party-description {
+          font-size: 16px;
+          color: #777;
+          margin-bottom: 20px;
+        }
+
+      .btn {
+          -webkit-border-radius: 9;
+          -moz-border-radius: 9;
+          border-radius: 9px;
+          font-family: Arial;
+          align-items: center;
+          align-content: center;
+          color: #ffffff;
+          font-size: 17px;
+          background: #d04a4a;
+          padding: 10px 20px 10px 20px;
+          text-decoration: none;
+          display: block;
+          margin: 0 auto;
+       }
+
+      .btn:hover {
+       background: #b50b38;
+        text-decoration: none;
+       cursor: grab;
+       }
+
+    </style> 
+  <div class="container">
+    <div class="title">
+        <a href="https://eci.gov.in/"><img src="ECI.jpeg" class="hp" alt="eci" height="109px" width="115px" style="cursor: pointer;" ></a><h2>Election Commission of India</h2>
+       </div>
+    <h1 class="head">Voting Phase</h1>
+    <div class="party-row">
+      <div class="party">
+        <a href="https://www.bjp.org/home" target="_blank" title="Click here to know more about BHARATIYA JANATA PARTY!"><img src="BJP.jpeg" alt="Party 1 Logo" class="party-logo" style="cursor: help;"></a>
+        <h3 class="party-name">BJP</h3>
+        <p class="party-description">“Sabka Saath, Sabka Vikas (Development for all)”.</p>
+        <a href="#" class="btn">Vote</a>
+      </div>
+      <div class="party">
+        <a href="https://www.inc.in/" target="_blank" title="Click here to know more about INDIAN NATIONAL CONGRESS!"><img src="Congress.png" alt="Party 2 Logo" class="party-logo"  style="cursor: help;"></a>
+        <h3 class="party-name">CONGRESS</h3>
+        <p class="party-description">"Jai Jawan, Jai Kisan(Farmers are the backbone)".</p>
+        <a href="#" class="btn">Vote</a>
+      </div>
+      <div class="party">
+        <a href="https://jds.ind.in/" target="_blank" title="Click here to know more about JDS!"><img src="JDS.jpg" alt="Party 3 Logo" class="party-logo" style="cursor: help;"></a>
+        <h3 class="party-name">JDS</h3>
+        <p class="party-description">" Your Vote, Your Power, Your Future!"</p>
+        <a href="#" class="btn">Vote</a>
+      </div>
+      <div class="party">
+        <a href="https://aamaadmiparty.org/" target="_blank" title="Click here to know more about AAM AADMI PARTY!"><img src="AAP.jpg" alt="Party 4 Logo" class="party-logo" style="cursor: help;"></a>
+        <h3 class="party-name">AAP</h3>
+        <p class="party-description">“Kejriwal Ki Sarkaar, Kejriwal Ka Paarshad''</p>
+        <a href="#" class="btn">Vote</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voting Interface</title>
     <style>
-      body {
+       body {
         font-family: Arial, sans-serif;
         margin: 0;
         overflow: hidden;
@@ -147,13 +147,7 @@
     </style>
   </head>
   <body>
-    <video
-      id="background-video"
-      src="static/background.mp4"
-      autoplay
-      loop
-      muted
-    ></video>
+    <video id="background-video" src="static/background.mp4" autoplay loop muted></video>
     <div class="container">
       <div class="title">
         <img
@@ -169,78 +163,188 @@
       <div class="dropdown-container">
         <div class="dropdown">
           <label class="dropdown-label" for="select-name">Choose Name:</label>
-          <select id="select-name" class="dropdown-select">
+          <select id="select-name" class="dropdown-select" onchange="updateRepresentatives()">
             <option value="">Choose Your Constituency</option>
             <option value="chamundeshwari">Chamundeshwari</option>
             <option value="varuna">Varuna</option>
             <option value="krishnaraja">Krishnaraja</option>
-            <option value="narasimharaja">Narasimharaja</option>
-            <option value="chamaraja">Chamaraja</option>
-            <option value="nanjangud">Nanjangud</option>
-            <option value="krishnarajanagara">Krishnarajanagara</option>
           </select>
         </div>
       </div>
       <h1 class="head">Voting Phase</h1>
       <br />
-      <div class="party-row">
-        <div class="party">
-          <img
-            src="static/tree.png"
-            alt="Party 1 Logo"
-            class="party-logo"
-            style="cursor: help"
-          />
-          <h3 class="party-name">Party 1</h3>
-          <p class="party-description">
-            " Your Vote, Your Power, Your Future!"
-          </p>
-          <br />
-          <a href="#" class="btn">Vote</a>
-        </div>
-        <div class="party">
-          <img
-            src="static/bear.png"
-            alt="Party 2 Logo"
-            class="party-logo"
-            style="cursor: help"
-          />
-          <h3 class="party-name">Party 2</h3>
-          <p class="party-description">
-            " Your Vote, Your Power, Your Future!"
-          </p>
-          <br />
-          <a href="#" class="btn">Vote</a>
-        </div>
-        <div class="party">
-          <img
-            src="static/moon.png"
-            alt="Party 3 Logo"
-            class="party-logo"
-            style="cursor: help"
-          />
-          <h3 class="party-name">Party 3</h3>
-          <p class="party-description">
-            " Your Vote, Your Power, Your Future!"
-          </p>
-          <br />
-          <a href="#" class="btn">Vote</a>
-        </div>
-        <div class="party">
-          <img
-            src="static/book.png"
-            alt="Party 4 Logo"
-            class="party-logo"
-            style="cursor: help"
-          />
-          <h3 class="party-name">Party 4</h3>
-          <p class="party-description">
-            " Your Vote, Your Power, Your Future!"
-          </p>
-          <br />
-          <a href="#" class="btn">Vote</a>
-        </div>
+      <div class="party-row" id="representatives-container">
       </div>
     </div>
+
+    <script>
+      const voteStorage = {};
+
+      function updateRepresentatives() {
+        const representativesContainer = document.getElementById("representatives-container");
+        const constituencySelect = document.getElementById("select-name");
+        const selectedConstituency = constituencySelect.value;
+
+        const representatives = {
+          chamundeshwari: [
+            {
+              name: getPartyRepresentativeName("Party A", 0),
+              party: "Party A",
+              image: "static/BJP.jpg",
+            },
+            {
+              name: getPartyRepresentativeName("Party B", 1),
+              party: "Party B",
+              image: "Congress.png",
+            },
+            {
+              name: getPartyRepresentativeName("Party C", 2),
+              party: "Party C",
+              image: "JDS.jpg",
+            },
+            {
+              name: getPartyRepresentativeName("Party D", 3),
+              party: "Party D",
+              image: "AAP.jpg",
+            },
+          ],
+          varuna: [
+            {
+              name: getPartyRepresentativeName("Party A", 4),
+              party: "Party A",
+              image: "BJP.jpg",
+            },
+            {
+              name: getPartyRepresentativeName("Party B", 5),
+              party: "Party B",
+              image: "Congress.png",
+            },
+            {
+              name: getPartyRepresentativeName("Party C", 6),
+              party: "Party C",
+              image: "JDS.jpg",
+            },
+            {
+              name: getPartyRepresentativeName("Party D", 7),
+              party: "Party D",
+              image: "AAP.jpg",
+            },
+          ],
+          krishnaraja: [
+            {
+              name: getPartyRepresentativeName("Party A", 8),
+              party: "Party A",
+              image: "BJP.jpg",
+            },
+            {
+              name: getPartyRepresentativeName("Party B", 9),
+              party: "Party B",
+              image: "Congress.png",
+            },
+            {
+              name: getPartyRepresentativeName("Party C", 10),
+              party: "Party C",
+              image: "JDS.jpg",
+            },
+            {
+              name: getPartyRepresentativeName("Party D", 11),
+              party: "Party D",
+              image: "AAP.jpg",
+            },
+          ],
+        };
+        representativesContainer.innerHTML = "";
+        const selectedRepresentatives = representatives[selectedConstituency];
+        if (selectedRepresentatives) {
+          selectedRepresentatives.forEach((representative) => {
+            const card = `
+              <div class="party">
+                <img src="${representative.image}" alt="Representative Image" class="party-logo" style="cursor: help" />
+                <h3 class="party-name">${representative.name}</h3>
+                <p class="party-description">${representative.party}</p>
+                <br />
+                <a href="#" class="btn" onclick="vote('${selectedConstituency}', '${representative.name}')">Vote</a>
+              </div>
+            `;
+            representativesContainer.innerHTML += card;
+          });
+        }
+      }
+
+      function getPartyRepresentativeName(partyName, index) {
+        const names = [
+          "KAVEESH GOWDA.V.",
+          "S.SIDDEGOWDA",
+          "G.T.DEVEGOWDA",
+          "KIRAN NAGESH",
+          "V.SOMANNA",
+          "SIDDARAMAIAH",
+          "Dr.SHANKAR N.L",
+          "RAJESH",
+          "T.S.SRIVATHSA",
+          "M.K.SOMASHEKAR",
+          "K.V.MALLESH",
+          "JAYASHREE.Y",
+        ];
+
+        if (index >= 0 && index < names.length) {
+          return names[index];
+        } else {
+          return partyName;
+        }
+      }
+      function vote(constituency, representativeName) {
+        // Create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+        console.log(constituency)
+        // Define the request URL
+        // const url = `/vote/${constituency}/${representativeName}`;
+        // const url = `/vote/${encodeURIComponent(constituency)}/${encodeURIComponent(representativeName)}`;
+
+
+        // // Send a POST request to the Flask endpoint
+        // xhr.open('POST', url);
+        // console.log(constituency)
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        // xhr.send();
+        const url = `/record_vote`;
+
+        // Create a payload object with the vote data
+        const payload = {
+          constituency: constituency,
+          representativeName: representativeName
+        };
+
+        // Send a POST request to the Flask endpoint with the payload
+        xhr.open('POST', url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(payload));
+        console.log(constituency)
+        // Handle the response (optional)
+        // xhr.onreadystatechange = function () {
+        //   if (xhr.readyState === XMLHttpRequest.DONE) {
+        //     if (xhr.status === 200) {
+        //       console.log('Vote recorded successfully!');
+        //     } else {
+        //       console.error('Failed to record vote.');
+        //     }
+        //   }
+        // };
+      }
+
+      // function vote(constituency, representativeName) {
+      //   if (!voteStorage[constituency]) {
+      //     voteStorage[constituency] = {};
+      //   }
+
+      //   if (!voteStorage[constituency][representativeName]) {
+      //     voteStorage[constituency][representativeName] = 1;
+      //   } else {
+      //     voteStorage[constituency][representativeName]++;
+      //   }
+
+      //   console.log(voteStorage);
+      // }
+    </script>
   </body>
 </html>
