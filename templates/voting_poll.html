@@ -195,61 +195,61 @@
             {
               name: getPartyRepresentativeName("Party B", 1),
               party: "Party B",
-              image: "Congress.png",
+              image: "static/Congress.png",
             },
             {
               name: getPartyRepresentativeName("Party C", 2),
               party: "Party C",
-              image: "JDS.jpg",
+              image: "static/JDS.jpg",
             },
             {
               name: getPartyRepresentativeName("Party D", 3),
               party: "Party D",
-              image: "AAP.jpg",
+              image: "static/AAP.jpg",
             },
           ],
           varuna: [
             {
               name: getPartyRepresentativeName("Party A", 4),
               party: "Party A",
-              image: "BJP.jpg",
+              image: "static/BJP.jpg",
             },
             {
               name: getPartyRepresentativeName("Party B", 5),
               party: "Party B",
-              image: "Congress.png",
+              image: "static/Congress.png",
             },
             {
               name: getPartyRepresentativeName("Party C", 6),
               party: "Party C",
-              image: "JDS.jpg",
+              image: "static/JDS.jpg",
             },
             {
               name: getPartyRepresentativeName("Party D", 7),
               party: "Party D",
-              image: "AAP.jpg",
+              image: "static/AAP.jpg",
             },
           ],
           krishnaraja: [
             {
               name: getPartyRepresentativeName("Party A", 8),
               party: "Party A",
-              image: "BJP.jpg",
+              image: "static/BJP.jpg",
             },
             {
               name: getPartyRepresentativeName("Party B", 9),
               party: "Party B",
-              image: "Congress.png",
+              image: "static/Congress.png",
             },
             {
               name: getPartyRepresentativeName("Party C", 10),
               party: "Party C",
-              image: "JDS.jpg",
+              image: "static/JDS.jpg",
             },
             {
               name: getPartyRepresentativeName("Party D", 11),
               party: "Party D",
-              image: "AAP.jpg",
+              image: "static/AAP.jpg",
             },
           ],
         };
@@ -263,7 +263,7 @@
                 <h3 class="party-name">${representative.name}</h3>
                 <p class="party-description">${representative.party}</p>
                 <br />
-                <a href="#" class="btn" onclick="vote('${selectedConstituency}', '${representative.name}')">Vote</a>
+                <a href="/done" class="btn" onclick="vote('${selectedConstituency}', '${representative.name}')">Vote</a>
               </div>
             `;
             representativesContainer.innerHTML += card;

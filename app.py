@@ -7,15 +7,15 @@ import os
 import face_auth
 
 app = Flask(__name__)
-global card_number
+card_number=''
 
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'tejaswinikshatriyas@gmail.com.com'
-app.config['MAIL_PASSWORD'] = 'password'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-mail = Mail(app)
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = 'tejaswinikshatriyas@gmail.com.com'
+# app.config['MAIL_PASSWORD'] = 'password'
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+# mail = Mail(app)
 
 app.secret_key = 'your secret key'
 
@@ -26,27 +26,35 @@ def db_connection():
     except sqlite3.Error as e:
         print(e)
     return conn
-
+i=0
 @app.route("/")
+@app.route("/home")
 def home():
+    global i
+    i=0
     return render_template('entry_pin.html')
 
 @app.route('/login', methods =['POST','GET'])
 def login():
     conn=db_connection()
     global card_number
+    global i
     card_number = request.form['card_number']
     atm_pin = request.form['atm_pin']
-    print(card_number)
+    
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM users WHERE card_number = ? AND atm_pin = ?', (card_number, atm_pin))
     # conn.commit()
-
+    i+=1
     if cursor.fetchone() is not None:
         return redirect(url_for('bank_or_vote'))
     else:
-        error = 'Invalid card number or ATM pin. Please try again.'
-        return render_template('entry_pin.html', error=error)
+        if i<3:
+            error = 'Invalid card number or ATM pin. Please try again.'
+            return render_template('entry_pin.html', error=error)
+        else:
+            error = 'Maximum limit exceeded'
+            return render_template('entry_pin.html', error=error)
 
 # @app.route("/invalid")
 # def invalid():
@@ -59,19 +67,51 @@ def login():
 def bank_or_vote():
     return render_template('voting_interface.html')
 
-i=1
+c=0
 @app.route("/validate")
 def validate():
+    global c
+    c=0
+    # global card_number
+    # conn=db_connection()
+    # cursor = conn.cursor()
+    # cursor.execute('SELECT aadhaar_number FROM map WHERE card_number = ?', (card_number,))
+    # a_temp = cursor.fetchone()
+
+    # cursor.execute('SELECT * FROM voted_aadhaar')
+    # all_aadhaar = cursor.fetchall()
+    # print("Hellooo",a_temp)
+    # print("Hellooo",all_aadhaar)
+    # if a_temp in all_aadhaar:
+    #     error = 'You have already voted'
+    #     return render_template('entry_pin.html', error=error)
+    # else:
+    #     cursor.execute(" insert INTO voted_aadhaar VALUES(?)",(a_temp[0],))
+    #     conn.commit()
+    #     conn.close()
+    # print("Hellooo",all_aadhaar)
     # os.system('python face_det/face_detect.py')
     # os.system('python face_det/face_auth.py {card_number}')
+    
     face_auth.call_face_detect()
     # print(card_number)
-    res = face_auth.call_face_match(card_number)
+    print("HIIIIII",card_number)
+    res,c = face_auth.call_face_match(c,card_number)
 
     if res:
-        return redirect(url_for('vote1'))
+        return redirect(url_for('success'))
     else:
-        return redirect(url_for('home'))
+        if c<2:
+            face_auth.call_face_detect()
+            res,c = face_auth.call_face_match(c,card_number)
+            if res and c<2:
+                return redirect(url_for('success'))
+            # else:
+            #     face_auth.call_face_detect()
+            #     res,c = face_auth.call_face_match(c,card_number)
+            #     if res:
+            #         return redirect(url_for('vote1'))
+        return redirect(url_for('failed'))
     # # i+=1
     # 
     # result = os.system("python face_det/face_match.py")
@@ -85,6 +125,25 @@ def validate():
 
 @app.route("/vote")
 def vote1():
+    global card_number
+    conn=db_connection()
+    cursor = conn.cursor()
+    cursor.execute('SELECT aadhaar_number FROM map WHERE card_number = ?', (card_number,))
+    a_temp = cursor.fetchone()
+
+    cursor.execute('SELECT * FROM voted_aadhaar')
+    all_aadhaar = cursor.fetchall()
+    print("Hellooo",a_temp)
+    print("Hellooo",all_aadhaar)
+    if a_temp in all_aadhaar:
+        error = 'You have already voted'
+        return render_template('entry_pin.html', error=error)
+    else:
+        cursor.execute(" insert INTO voted_aadhaar VALUES(?)",(a_temp[0],))
+        conn.commit()
+        conn.close()
+    print("Hellooo",all_aadhaar)
+    
     return render_template('voting_poll.html')
 
 @app.route('/record_vote', methods=['POST'])
@@ -114,7 +173,7 @@ def record_vote():
     # Close the connection
     conn.close()
 
-    return 'Vote recorded successfully!', 200
+    return redirect(url_for('done'))
 
 @app.route('/vote/<constituency>/<representative>')
 def vote(constituency, representative):
@@ -143,9 +202,13 @@ def vote(constituency, representative):
 def done():
     return render_template('Voting_done.html')
 
-@app.route("/demo")
-def demo():
-    return render_template('voting_party.html')
+@app.route("/success")
+def success():
+    return render_template('auth_success.html')
+
+@app.route("/failed")
+def failed():
+    return render_template('auth_failed.html')
 
 if __name__=="__main__":
     app.run(debug=True)

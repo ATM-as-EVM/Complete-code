@@ -48,8 +48,16 @@
         z-index: -1;
       }
     </style>
-  </head>
+    <script type="text/javascript">
+      // Function to redirect or transition to another page
+      function redirect() {
+        window.location.href = "home";
+      }
 
+      // Set the timeout for 4 seconds (4000 milliseconds)
+      setTimeout(redirect, 4000);
+    </script>
+  </head>
   <body>
     <video id="background-video" autoplay loop muted>
       <source src="static/back.mp4" type="video/mp4" />

@@ -38,7 +38,8 @@ import sys,os
 # import cv2
 # import face_recognition
 
-def match_faces(captured_image_path, database_image_path):
+def match_faces(captured_image_path, database_image_path,c):
+    c+=1
     # Load the captured image and convert it to RGB
     captured_image = face_recognition.load_image_file(captured_image_path)
     captured_image = cv2.cvtColor(captured_image, cv2.COLOR_BGR2RGB)
@@ -66,9 +67,9 @@ def match_faces(captured_image_path, database_image_path):
 
         # Check if any match is found
         if any(matches):
-            return True
+            return True,c
         else:
-            return False
+            return False,c
 
 # Path to the captured image and the database image
 # captured_image_path = 'C:\\Users\\ankit\OneDrive\\Pictures\\Camera Roll\\ankitha.jpg'
