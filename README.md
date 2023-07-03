@@ -17,18 +17,19 @@ Along with the transperancy in the vote process.
 _Technologies used_
 
 Frontend
-• HTML
-• CSS
-• JavaScript
+1. HTML
+2. CSS
+3. JavaScript
 
 Backend
-• Flask framework
-• SQlite
+1. Flask framework
+2. SQlite
 
--> An extra level of authentication reduces the number of false and tender votes.
--> Nullifying about 80 % of budget.
--> Reduces huge amount of paper usage.
--> Mobile ATM facilities can be provided to the remote areas.
--> Any Government ID is sufficient preferrably Aadhaar (can cast vote without voter ID )
--> VVPAT can be connected
+_Additional Features_
+1. An extra level of authentication reduces the number of false and tender votes.
+2. Nullifying about 80 % of budget.
+3. Reduces huge amount of paper usage.
+4. Mobile ATM facilities can be provided to the remote areas.
+5. Any Government ID is sufficient preferrably Aadhaar (can cast vote without voter ID )
+6. VVPAT can be connected
 
