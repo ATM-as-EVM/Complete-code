@@ -4,8 +4,8 @@ To solve the problem of having people to vote in their registered residential pl
 
 A web application to use ATM as as Voting machines (EVM) during election time.
 We have added special feature for authentication that is the facial recognition and Aadhaar data for validation purposes.
-This aplication displays the candidates list of the particular constituency dynamically from his constituency.
-Along with the transperancy in the vote process.
+This application displays the candidates list of the particular constituency dynamically from his constituency.
+Along with the transparency in the vote process.
 
 **Objectives**
 1. Registration
